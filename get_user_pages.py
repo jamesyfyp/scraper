@@ -8,14 +8,15 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support import expected_conditions as EC
 from utils import wait_for_page_load
 
-site = 
+site = os.environ.get('SITE_URL')
 
 options = Options()
 options.add_experimental_option("detach", True)
+options.add_argument("--start-maximized")
 
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
-driver.get("https://www.my-diary.org/surf/")
+driver.get(site)
 driver.maximize_window
 #click classname  & btn btn-diary
 button_adult_content = driver.find_element(By.CLASS_NAME, 'custom-control-label')
