@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support import expected_conditions as EC
-from utils import wait_for_page_load
+from utils import wait_for_page_load, to_snake
 
 options = Options()
 options.add_experimental_option("detach", True)
@@ -21,7 +21,7 @@ driver.get(user_urls[0])
 wait_for_page_load(driver, 10)
 #get user name
 h1_user_name = driver.find_element(By.XPATH, '//h1[@class="heading text-center"]')
-user_name = h1_user_name.text
+user_name = to_snake(h1_user_name.text)
 
 #getLinksToPosts
 post_div = driver.find_element(By.ID, 'entrylist-inner')
