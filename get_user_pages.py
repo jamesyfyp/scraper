@@ -35,6 +35,7 @@ links = driver.find_elements("xpath", "//a[@href]")
 user_urls = []
 user_url_pattern = '/read/d'
 for link in links:
+    print(link)
     url = link.get_attribute("href")
     if user_url_pattern in url:
         user_urls.append(url)  
